@@ -2,8 +2,9 @@ import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { ApiProperty, ApiBody } from '@nestjs/swagger';
 import { GameExperience } from './game-experiences/game-experience.entity';
 import { StreamingCategory } from './streaming-categories/streaming-category.entity';
-import { StreamerSponsor } from './streamer-sponsors/streamer-sponsor';
+import { StreamerSponsorEntity } from './streamer-sponsors/streamer-sponsor.entity';
 import { TournamentExperience } from './tournament-experiences/tournament-experience.entity';
+import { FavoriteGame } from './favorite-games/favorite-game.entity';
 
 @Entity('profile')
 export class Profile {
@@ -37,10 +38,10 @@ export class Profile {
   public streamingCategories: StreamingCategory[];
 
   @OneToMany(
-    () => StreamerSponsor,
-    (streamerSponsor: StreamerSponsor) => streamerSponsor.profile,
+    () => StreamerSponsorEntity,
+    (streamerSponsor: StreamerSponsorEntity) => streamerSponsor.profile,
   )
-  public streamerSponsors: StreamerSponsor[];
+  public streamerSponsors: StreamerSponsorEntity[];
 
   @OneToMany(
     () => TournamentExperience,
@@ -48,4 +49,10 @@ export class Profile {
       tournamentExperience.profile,
   )
   public tournamentExperiences: TournamentExperience[];
+
+  @OneToMany(
+    () => FavoriteGame,
+    (favoriteGame: FavoriteGame) => favoriteGame.profile,
+  )
+  public favoriteGames: FavoriteGame[];
 }

@@ -2,8 +2,8 @@ import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { ApiProperty, ApiBody } from '@nestjs/swagger';
 import { Profile } from '../profile.entity';
 
-@Entity('streaming-categories')
-export class StreamingCategory {
+@Entity('streamer-sponsors')
+export class StreamerSponsorEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -11,6 +11,6 @@ export class StreamingCategory {
   name: string;
 
   // Relations
-  @ManyToOne(() => Profile, (profile: Profile) => profile.streamingCategories)
+  @ManyToOne(() => Profile, (profile: Profile) => profile.streamerSponsors)
   public profile: Profile;
 }

@@ -14,6 +14,7 @@ import { GameExperiencesService } from './game-experiences/game-experiences.serv
 import { StreamingCategoriesService } from './streaming-categories/streaming-categories.service';
 import { StreamerSponsorsService } from './streamer-sponsors/streamer-sponsors.service';
 import { TournamentExperiencesService } from './tournament-experiences/tournament-experiences.service';
+import { FavoriteGamesService } from './favorite-games/favorite-games.service';
 
 @ApiTags('profiles')
 @Controller('profiles')
@@ -24,6 +25,7 @@ export class ProfilesController {
     private readonly streamingCategoriesService: StreamingCategoriesService,
     private readonly streamerSponsorsService: StreamerSponsorsService,
     private readonly tournamentExperiencesService: TournamentExperiencesService,
+    private readonly favoriteGamesService: FavoriteGamesService,
   ) {}
 
   @Post()
@@ -48,6 +50,10 @@ export class ProfilesController {
       );
     }
 
+    for (let i = 0; i < profile.favoriteGames.length; ++i) {
+      await this.favoriteGamesService.create(profile.favoriteGames[i]);
+    }
+
     const newProfile = await this.profilesService.create(profile);
     return response.status(HttpStatus.CREATED).json({ newProfile });
   }
@@ -60,6 +66,7 @@ export class ProfilesController {
         'streamingCategories',
         'streamerSponsors',
         'tournamentExperiences',
+        'favoriteGames',
       ],
     });
     return response.status(HttpStatus.OK).json({ profiles });
@@ -73,6 +80,7 @@ export class ProfilesController {
         'streamingCategories',
         'streamerSponsors',
         'tournamentExperiences',
+        'favoriteGames',
       ],
     });
     return response.status(HttpStatus.OK).json({ profile });

@@ -11,6 +11,8 @@ import { StreamingCategoriesModule } from './streaming-categories/streaming-cate
 import { StreamerSponsorsModule } from './streamer-sponsors/streamer-sponsors.module';
 import { TournamentExperiencesModule } from './tournament-experiences/tournament-experiences.module';
 import { TournamentExperiencesService } from './tournament-experiences/tournament-experiences.service';
+import { FavoriteGamesModule } from './favorite-games/favorite-games.module';
+import { FavoriteGamesService } from './favorite-games/favorite-games.service';
 
 @Module({
   imports: [
@@ -19,6 +21,7 @@ import { TournamentExperiencesService } from './tournament-experiences/tournamen
     StreamingCategoriesModule,
     StreamerSponsorsModule,
     TournamentExperiencesModule,
+    FavoriteGamesModule,
   ],
 
   providers: [
@@ -27,6 +30,7 @@ import { TournamentExperiencesService } from './tournament-experiences/tournamen
     StreamingCategoriesService,
     StreamerSponsorsService,
     TournamentExperiencesService,
+    FavoriteGamesService,
   ],
 
   exports: [TypeOrmModule],

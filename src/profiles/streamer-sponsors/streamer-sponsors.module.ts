@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
 import { StreamerSponsorsService } from './streamer-sponsors.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { StreamerSponsor } from './streamer-sponsor';
+import { StreamerSponsorEntity } from './streamer-sponsor.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([StreamerSponsor])],
+  imports: [TypeOrmModule.forFeature([StreamerSponsorEntity])],
   providers: [StreamerSponsorsService],
   exports: [TypeOrmModule],
 })
