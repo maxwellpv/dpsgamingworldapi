@@ -22,6 +22,12 @@ export class UsersController {
     return response.status(HttpStatus.CREATED).json({ newUser });
   }
 
+  @Get()
+  async findAll(@Res() response) {
+    const users = await this.usersService.findAll();
+    return response.status(HttpStatus.OK).json({ users });
+  }
+
   @Get(':id')
   async findById(@Res() response, @Param('id') id) {
     const user = await this.usersService.findOne(id);
