@@ -1,19 +1,19 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('users')
-export class User {
+@Entity('profile')
+export class Profile {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  username: string;
+  user_id: number;
 
   @Column()
-  email: string;
+  favorite_game_id: number;
 
   @Column()
-  password: string;
+  game_level: string;
 
   @Column({ default: false })
-  premium: boolean;
+  streamer: boolean;
 }
