@@ -1,20 +1,58 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { ApiProperty, ApiBody } from '@nestjs/swagger';
+import { GameExperience } from './game-experiences/game-experience.entity';
+import { StreamingCategory } from './streaming-categories/streaming-category.entity';
+import { StreamerSponsorEntity } from './streamer-sponsors/streamer-sponsor.entity';
+import { TournamentExperience } from './tournament-experiences/tournament-experience.entity';
+import { FavoriteGame } from './favorite-games/favorite-game.entity';
 
 @Entity('profile')
 export class Profile {
   @PrimaryGeneratedColumn()
-  id: number;
+  public id: number;
 
   @Column()
-  user_id: number;
+  public user_id: number;
 
   @Column()
-  favorite_game_id: number;
+  public favorite_game_id: number;
 
   @Column()
-  game_level: string;
+  public game_level: string;
 
   @Column({ default: false })
-  streamer: boolean;
+  public streamer: boolean;
+
+  // Relations
+
+  @OneToMany(
+    () => GameExperience,
+    (gameExperience: GameExperience) => gameExperience.profile,
+  )
+  public gameExperiences: GameExperience[];
+
+  @OneToMany(
+    () => StreamingCategory,
+    (streamingCategory: StreamingCategory) => streamingCategory.profile,
+  )
+  public streamingCategories: StreamingCategory[];
+
+  @OneToMany(
+    () => StreamerSponsorEntity,
+    (streamerSponsor: StreamerSponsorEntity) => streamerSponsor.profile,
+  )
+  public streamerSponsors: StreamerSponsorEntity[];
+
+  @OneToMany(
+    () => TournamentExperience,
+    (tournamentExperience: TournamentExperience) =>
+      tournamentExperience.profile,
+  )
+  public tournamentExperiences: TournamentExperience[];
+
+  @OneToMany(
+    () => FavoriteGame,
+    (favoriteGame: FavoriteGame) => favoriteGame.profile,
+  )
+  public favoriteGames: FavoriteGame[];
 }
