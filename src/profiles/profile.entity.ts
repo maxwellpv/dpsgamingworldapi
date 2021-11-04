@@ -3,6 +3,7 @@ import { ApiProperty, ApiBody } from '@nestjs/swagger';
 import { GameExperience } from './game-experiences/game-experience.entity';
 import { StreamingCategory } from './streaming-categories/streaming-category.entity';
 import { StreamerSponsor } from './streamer-sponsors/streamer-sponsor';
+import { TournamentExperience } from './tournament-experiences/tournament-experience.entity';
 
 @Entity('profile')
 export class Profile {
@@ -40,4 +41,11 @@ export class Profile {
     (streamerSponsor: StreamerSponsor) => streamerSponsor.profile,
   )
   public streamerSponsors: StreamerSponsor[];
+
+  @OneToMany(
+    () => TournamentExperience,
+    (tournamentExperience: TournamentExperience) =>
+      tournamentExperience.profile,
+  )
+  public tournamentExperiences: TournamentExperience[];
 }

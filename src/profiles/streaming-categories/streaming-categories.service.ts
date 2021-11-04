@@ -7,18 +7,18 @@ import { StreamingCategory } from './streaming-category.entity';
 export class StreamingCategoriesService {
   constructor(
     @InjectRepository(StreamingCategory)
-    private gameExperienceRepository: Repository<StreamingCategory>,
+    private streamingCategoryRepository: Repository<StreamingCategory>,
   ) {}
 
-  create(gameExperience: StreamingCategory): Promise<StreamingCategory> {
-    return this.gameExperienceRepository.save(gameExperience);
+  create(streamingCategory: StreamingCategory): Promise<StreamingCategory> {
+    return this.streamingCategoryRepository.save(streamingCategory);
   }
 
   findAll(): Promise<StreamingCategory[]> {
-    return this.gameExperienceRepository.find();
+    return this.streamingCategoryRepository.find();
   }
 
   findOne(id: number): Promise<StreamingCategory> {
-    return this.gameExperienceRepository.findOne(id);
+    return this.streamingCategoryRepository.findOne(id);
   }
 }

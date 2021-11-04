@@ -7,18 +7,18 @@ import { StreamerSponsor } from './streamer-sponsor';
 export class StreamerSponsorsService {
   constructor(
     @InjectRepository(StreamerSponsor)
-    private gameExperienceRepository: Repository<StreamerSponsor>,
+    private streamerSponsorRepository: Repository<StreamerSponsor>,
   ) {}
 
-  create(gameExperience: StreamerSponsor): Promise<StreamerSponsor> {
-    return this.gameExperienceRepository.save(gameExperience);
+  create(streamerSponsor: StreamerSponsor): Promise<StreamerSponsor> {
+    return this.streamerSponsorRepository.save(streamerSponsor);
   }
 
   findAll(): Promise<StreamerSponsor[]> {
-    return this.gameExperienceRepository.find();
+    return this.streamerSponsorRepository.find();
   }
 
   findOne(id: number): Promise<StreamerSponsor> {
-    return this.gameExperienceRepository.findOne(id);
+    return this.streamerSponsorRepository.findOne(id);
   }
 }

@@ -9,6 +9,8 @@ import { StreamingCategoriesService } from './streaming-categories/streaming-cat
 import { StreamerSponsorsService } from './streamer-sponsors/streamer-sponsors.service';
 import { StreamingCategoriesModule } from './streaming-categories/streaming-categories.module';
 import { StreamerSponsorsModule } from './streamer-sponsors/streamer-sponsors.module';
+import { TournamentExperiencesModule } from './tournament-experiences/tournament-experiences.module';
+import { TournamentExperiencesService } from './tournament-experiences/tournament-experiences.service';
 
 @Module({
   imports: [
@@ -16,6 +18,7 @@ import { StreamerSponsorsModule } from './streamer-sponsors/streamer-sponsors.mo
     GameExperiencesModule,
     StreamingCategoriesModule,
     StreamerSponsorsModule,
+    TournamentExperiencesModule,
   ],
 
   providers: [
@@ -23,6 +26,7 @@ import { StreamerSponsorsModule } from './streamer-sponsors/streamer-sponsors.mo
     GameExperiencesService,
     StreamingCategoriesService,
     StreamerSponsorsService,
+    TournamentExperiencesService,
   ],
 
   exports: [TypeOrmModule],
