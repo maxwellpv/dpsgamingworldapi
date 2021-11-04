@@ -8,6 +8,8 @@ import { User } from './users/user.entity';
 import { UsersModule } from './users/users.module';
 import { GameExperience } from './profiles/game-experiences/game-experience.entity';
 import { StreamingCategory } from './profiles/streaming-categories/streaming-category.entity';
+import { Publication } from './publications/publication.entity';
+import { PublicationsModule } from './publications/publications.module';
 
 @Module({
   imports: [
