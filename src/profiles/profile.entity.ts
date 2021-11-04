@@ -2,6 +2,7 @@ import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { ApiProperty, ApiBody } from '@nestjs/swagger';
 import { GameExperience } from './game-experiences/game-experience.entity';
 import { StreamingCategory } from './streaming-categories/streaming-category.entity';
+import { StreamerSponsor } from './streamer-sponsors/streamer-sponsor';
 
 @Entity('profile')
 export class Profile {
@@ -33,4 +34,10 @@ export class Profile {
     (streamingCategory: StreamingCategory) => streamingCategory.profile,
   )
   public streamingCategories: StreamingCategory[];
+
+  @OneToMany(
+    () => StreamerSponsor,
+    (streamerSponsor: StreamerSponsor) => streamerSponsor.profile,
+  )
+  public streamerSponsors: StreamerSponsor[];
 }
