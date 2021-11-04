@@ -6,6 +6,8 @@ import { ProfilesModule } from './profiles/profiles.module';
 import { Profile } from './profiles/profile.entity';
 import { User } from './users/user.entity';
 import { UsersModule } from './users/users.module';
+import { GameExperience } from './profiles/game-experiences/game-experience.entity';
+import { StreamingCategory } from './profiles/streaming-categories/streaming-category.entity';
 
 @Module({
   imports: [
@@ -16,7 +18,7 @@ import { UsersModule } from './users/users.module';
       username: 'root',
       password: '123456',
       database: 'gamingworld_dps',
-      entities: [User, Profile],
+      entities: [User, Profile, GameExperience, StreamingCategory],
       synchronize: true,
       dropSchema: false,
       autoLoadEntities: true,

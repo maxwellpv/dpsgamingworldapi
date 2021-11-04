@@ -1,20 +1,36 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { ApiProperty, ApiBody } from '@nestjs/swagger';
+import { GameExperience } from './game-experiences/game-experience.entity';
+import { StreamingCategory } from './streaming-categories/streaming-category.entity';
 
 @Entity('profile')
 export class Profile {
   @PrimaryGeneratedColumn()
-  id: number;
+  public id: number;
 
   @Column()
-  user_id: number;
+  public user_id: number;
 
   @Column()
-  favorite_game_id: number;
+  public favorite_game_id: number;
 
   @Column()
-  game_level: string;
+  public game_level: string;
 
   @Column({ default: false })
-  streamer: boolean;
+  public streamer: boolean;
+
+  // Relations
+
+  @OneToMany(
+    () => GameExperience,
+    (gameExperience: GameExperience) => gameExperience.profile,
+  )
+  public gameExperiences: GameExperience[];
+
+  @OneToMany(
+    () => StreamingCategory,
+    (streamingCategory: StreamingCategory) => streamingCategory.profile,
+  )
+  public streamingCategories: StreamingCategory[];
 }

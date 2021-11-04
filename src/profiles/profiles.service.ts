@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Profile } from './profile.entity';
-import { Repository } from 'typeorm';
+import { FindOneOptions, Repository } from 'typeorm';
 
 @Injectable()
 export class ProfilesService {
@@ -10,15 +10,15 @@ export class ProfilesService {
     private profileRepository: Repository<Profile>,
   ) {}
 
-  findAll(): Promise<Profile[]> {
-    return this.profileRepository.find();
+  findAll(options?: object): Promise<Profile[]> {
+    return this.profileRepository.find(options);
   }
 
-  findOne(id: string): Promise<Profile> {
-    return this.profileRepository.findOne(id);
+  findOne(id: string, options?: FindOneOptions<Profile>): Promise<Profile> {
+    return this.profileRepository.findOne(id, options);
   }
 
-  createProfile(profile: Profile): Promise<Profile> {
+  create(profile: Profile): Promise<Profile> {
     return this.profileRepository.save(profile);
   }
 }
