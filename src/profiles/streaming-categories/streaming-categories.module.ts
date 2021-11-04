@@ -8,4 +8,4 @@ import { StreamingCategory } from './streaming-category.entity';
   providers: [StreamingCategoriesService],
   exports: [TypeOrmModule],
 })
-export class StreamingCateogoriesModule {}
+export class StreamingCategoriesModule {}
