@@ -4,7 +4,7 @@ import { Profile } from './profile.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()
-export class ProfileService {
+export class ProfilesService {
   constructor(
     @InjectRepository(Profile)
     private profileRepository: Repository<Profile>,
