@@ -9,6 +9,8 @@ import { ProfilesController } from './profiles.controller';
 
   providers: [ProfilesService],
 
+  exports: [TypeOrmModule],
+
   controllers: [ProfilesController],
 })
 export class ProfilesModule {}

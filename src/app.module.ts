@@ -19,6 +19,7 @@ import { UsersModule } from './users/users.module';
       entities: [User, Profile],
       synchronize: true,
       dropSchema: false,
+      autoLoadEntities: true,
     }),
     UsersModule,
     ProfilesModule,
