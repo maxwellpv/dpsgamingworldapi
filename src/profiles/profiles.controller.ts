@@ -7,12 +7,12 @@ import {
   Post,
   Res,
 } from '@nestjs/common';
-import { ProfileService } from './profile.service';
+import { ProfilesService } from './profiles.service';
 import { Profile } from './profile.entity';
 
 @Controller('profile')
-export class ProfileController {
-  constructor(private readonly libraryService: ProfileService) {}
+export class ProfilesController {
+  constructor(private readonly libraryService: ProfilesService) {}
 
   @Post()
   async createProfile(@Res() response, @Body() profile: Profile) {
