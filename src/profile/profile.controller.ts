@@ -6,7 +6,6 @@ import {
   Param,
   Post,
   Res,
-
 } from '@nestjs/common';
 import { ProfileService } from './profile.service';
 import { Profile } from './profile.entity';
@@ -26,5 +25,4 @@ export class ProfileController {
     const profile = await this.libraryService.findOne(id);
     return response.status(HttpStatus.OK).json({ profile });
   }
-
 }
