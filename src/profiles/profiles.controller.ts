@@ -5,6 +5,7 @@ import {
   HttpStatus,
   Param,
   Post,
+  Put,
   Res,
 } from '@nestjs/common';
 import { ProfilesService } from './profiles.service';
@@ -84,5 +85,17 @@ export class ProfilesController {
       ],
     });
     return response.status(HttpStatus.OK).json({ profile });
+  }
+  @Put('/:id')
+  async updateById(
+    @Res() response,
+    @Body() profile: Profile,
+    @Param('id') id,
+  ) {
+    const updateResult = await this.ProfilesService.updateProfile(
+      id,
+      profile,
+    );
+    return response.status(HttpStatus.CREATED).json({ updateResult });
   }
 }
