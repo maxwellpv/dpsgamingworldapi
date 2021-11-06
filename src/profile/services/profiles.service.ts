@@ -21,4 +21,15 @@ export class ProfilesService {
   create(profile: Profile): Promise<Profile> {
     return this.profileRepository.save(profile);
   }
+  async updateProfile(
+    id: string,
+    profile: Profile,
+  ): Promise<Profile> {
+    const todo = await this.profileRepository.findOne(id);
+    if (!todo == null) {
+      return null;
+    }
+    await this.profileRepository.update(id, profile);
+    return await this.profileRepository.findOne(id);
+  }
 }
