@@ -2,14 +2,16 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ProfilesModule } from './profiles/profiles.module';
-import { Profile } from './profiles/profile.entity';
-import { User } from './users/user.entity';
-import { UsersModule } from './users/users.module';
-import { GameExperience } from './profiles/game-experiences/game-experience.entity';
-import { StreamingCategory } from './profiles/streaming-categories/streaming-category.entity';
-import { Publication } from './publications/publication.entity';
-import { PublicationsModule } from './publications/publications.module';
+import { ProfilesModule } from './profile/modules/profiles.module';
+import { Profile } from './profile/entities/profile.entity';
+import { User } from './security/entities/user.entity';
+import { UsersModule } from './security/modules/users.module';
+import { GameExperience } from './profile/entities/game-experience.entity';
+import { StreamingCategory } from './profile/entities/streaming-category.entity';
+import { Publication } from './publication/entities/publication.entity';
+import { PublicationsModule } from './publication/modules/publications.module';
+import { Tournament } from './business/entities/tournament.entity';
+import { TournamentsModule } from './business/modules/tournaments.module';
 
 @Module({
   imports: [
@@ -20,11 +22,20 @@ import { PublicationsModule } from './publications/publications.module';
       username: 'root',
       password: '123456',
       database: 'gamingworld_dps',
-      entities: [User, Profile, GameExperience, StreamingCategory],
+      entities: [
+        User,
+        Profile,
+        GameExperience,
+        StreamingCategory,
+        Tournament,
+        Publication,
+      ],
       synchronize: true,
       dropSchema: false,
       autoLoadEntities: true,
     }),
+    PublicationsModule,
+    TournamentsModule,
     UsersModule,
     ProfilesModule,
   ],
