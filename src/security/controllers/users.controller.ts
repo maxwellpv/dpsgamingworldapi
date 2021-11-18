@@ -8,7 +8,7 @@ import {
   Res,
 } from '@nestjs/common';
 import { UsersService } from '../services/users.service';
-import { User } from '../entities/user.entity';
+import { User } from '../domain/entities/user.entity';
 import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('users')

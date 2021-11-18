@@ -8,7 +8,7 @@ import {
   Res,
 } from '@nestjs/common';
 import { ProfilesService } from '../services/profiles.service';
-import { Profile } from '../entities/profile.entity';
+import { Profile } from '../domain/entities/profile.entity';
 import { ApiTags } from '@nestjs/swagger';
 import { GameExperiencesService } from '../services/game-experiences.service';
 import { StreamingCategoriesService } from '../services/streaming-categories.service';

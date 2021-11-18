@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { TournamentExperience } from '../entities/tournament-experience.entity';
+import { TournamentExperience } from '../domain/entities/tournament-experience.entity';
 
 @Injectable()
 export class TournamentExperiencesService {

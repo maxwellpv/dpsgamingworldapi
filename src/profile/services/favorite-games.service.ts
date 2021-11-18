@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { FavoriteGame } from '../entities/favorite-game.entity';
+import { FavoriteGame } from '../domain/entities/favorite-game.entity';
 
 @Injectable()
 export class FavoriteGamesService {

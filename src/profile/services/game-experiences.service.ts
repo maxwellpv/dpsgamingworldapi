@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { GameExperience } from '../entities/game-experience.entity';
+import { GameExperience } from '../domain/entities/game-experience.entity';
 
 @Injectable()
 export class GameExperiencesService {

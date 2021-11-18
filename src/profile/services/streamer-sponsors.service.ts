@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { StreamerSponsorEntity } from '../entities/streamer-sponsor.entity';
+import { StreamerSponsorEntity } from '../domain/entities/streamer-sponsor.entity';
 
 @Injectable()
 export class StreamerSponsorsService {

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { StreamingCategory } from '../entities/streaming-category.entity';
+import { StreamingCategory } from '../domain/entities/streaming-category.entity';
 
 @Injectable()
 export class StreamingCategoriesService {

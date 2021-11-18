@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ProfilesService } from '../services/profiles.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Profile } from '../entities/profile.entity';
+import { Profile } from '../domain/entities/profile.entity';
 import { ProfilesController } from '../controllers/profiles.controller';
 import { GameExperiencesModule } from './game-experiences.module';
 import { GameExperiencesService } from '../services/game-experiences.service';
