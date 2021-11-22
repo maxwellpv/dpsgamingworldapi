@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, UpdateResult } from 'typeorm';
 import { Subscription } from '../domain/entities/subscription.entity';
-import { SubscriptionsInterfaceService } from '../domain/entities/subscription-interface';
+import { SubscriptionsInterfaceService } from '../domain/services/subscription-interface';
 
 @Injectable()
 export class SubscriptionsService implements SubscriptionsInterfaceService {
