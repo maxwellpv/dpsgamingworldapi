@@ -2,9 +2,12 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { StreamerSponsorEntity } from '../domain/entities/streamer-sponsor.entity';
+import { StreamerSponsorsInterfaceService } from '../domain/services/streamer-sponsors-interface.service';
 
 @Injectable()
-export class StreamerSponsorsService {
+export class StreamerSponsorsService
+  implements StreamerSponsorsInterfaceService
+{
   constructor(
     @InjectRepository(StreamerSponsorEntity)
     private streamerSponsorRepository: Repository<StreamerSponsorEntity>,

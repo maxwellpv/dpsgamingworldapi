@@ -6,19 +6,19 @@ import { StreamerSponsorEntity } from './streamer-sponsor.entity';
 import { TournamentExperience } from './tournament-experience.entity';
 import { FavoriteGame } from './favorite-game.entity';
 
-@Entity('profile')
+@Entity('profiles')
 export class Profile {
   @PrimaryGeneratedColumn()
   public id: number;
 
-  @Column()
-  public user_id: number;
+  @Column({ name: 'user_id' })
+  public userId: number;
 
-  @Column()
-  public favorite_game_id: number;
+  @Column({ name: 'favorite_game_id' })
+  public favoriteGameId: number;
 
-  @Column()
-  public game_level: string;
+  @Column({ name: 'game_level' })
+  public gameLevel: string;
 
   @Column({ default: false })
   public streamer: boolean;

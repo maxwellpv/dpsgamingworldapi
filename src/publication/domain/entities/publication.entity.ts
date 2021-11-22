@@ -4,25 +4,25 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 export class Publication {
   @PrimaryGeneratedColumn()
   id: number;
-  @Column({ default: null })
+  @Column({ default: null, name: 'publication_type' })
   publicationType: number;
   @Column()
   title: string;
   @Column()
   content: string;
-  @Column({ default: null })
+  @Column({ name: 'participant_limit', default: null })
   participantLimit: number;
-  @Column({ default: null })
-  prize_pool: number;
-  @Column({ default: null })
+  @Column({ name: 'prize_pool', default: null })
+  prizePool: number;
+  @Column({ name: 'url_to_image', default: null })
   urlToImage: string;
-  @Column({ default: null })
+  @Column({ name: 'tournament_date', default: null })
   tournamentDate: string;
-  @Column({ default: null })
+  @Column({ name: 'tournament_hour', default: null })
   tournamentHour: string;
-  @Column({ default: null })
+  @Column({ name: 'publicated_at', default: null })
   publicatedAt: string;
-  @Column({ default: null })
+  @Column({ name: 'game_id', default: null })
   gameId: number;
   @Column()
   userId: number;

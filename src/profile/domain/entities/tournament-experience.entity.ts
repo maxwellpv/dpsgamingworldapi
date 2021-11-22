@@ -1,8 +1,13 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  JoinColumn,
+} from 'typeorm';
 import { ApiProperty, ApiBody } from '@nestjs/swagger';
 import { Profile } from './profile.entity';
-
-@Entity('tournament-experiences')
+@Entity('tournament_experiences')
 export class TournamentExperience {
   @PrimaryGeneratedColumn()
   id: number;
@@ -15,5 +20,6 @@ export class TournamentExperience {
 
   // Relations
   @ManyToOne(() => Profile, (profile: Profile) => profile.tournamentExperiences)
+  @JoinColumn({ name: 'profile_id' })
   public profile: Profile;
 }

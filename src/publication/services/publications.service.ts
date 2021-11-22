@@ -2,9 +2,10 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, UpdateResult } from 'typeorm';
 import { Publication } from '../domain/entities/publication.entity';
+import { PublicationsInterfaceService } from '../domain/services/publication-interface.service';
 
 @Injectable()
-export class PublicationsService {
+export class PublicationsService implements PublicationsInterfaceService {
   constructor(
     @InjectRepository(Publication)
     private publicationRepository: Repository<Publication>,
