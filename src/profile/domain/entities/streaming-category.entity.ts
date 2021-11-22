@@ -1,8 +1,14 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  JoinColumn,
+} from 'typeorm';
 import { ApiProperty, ApiBody } from '@nestjs/swagger';
 import { Profile } from './profile.entity';
 
-@Entity('streaming-categories')
+@Entity('streaming_categories')
 export class StreamingCategory {
   @PrimaryGeneratedColumn()
   id: number;
@@ -12,5 +18,6 @@ export class StreamingCategory {
 
   // Relations
   @ManyToOne(() => Profile, (profile: Profile) => profile.streamingCategories)
+  @JoinColumn({ name: 'profile_id' })
   public profile: Profile;
 }

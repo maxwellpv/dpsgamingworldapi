@@ -1,10 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, UpdateResult } from 'typeorm';
-import { Tournament } from '../entities/tournament.entity';
+import { Tournament } from '../domain/entities/tournament.entity';
+import { TournamentsInterfaceService } from '../domain/services/tournaments-interface.service';
 
 @Injectable()
-export class TournamentsService {
+export class TournamentsService implements TournamentsInterfaceService {
   constructor(
     @InjectRepository(Tournament)
     private tournamentsService: Repository<Tournament>,

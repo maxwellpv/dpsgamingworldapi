@@ -4,14 +4,14 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 export class Tournament {
   @PrimaryGeneratedColumn()
   id: number;
-  @Column({ default: false })
+  @Column({ default: false, name: 'is_team_mode' })
   isTeamMode: number;
-  @Column({ default: null })
+  @Column({ default: null, name: 'prize_pool' })
   prizePool: number;
-  @Column({ default: null })
+  @Column({ default: null, name: 'game_id' })
   gameId: number;
-  @Column()
+  @Column({ name: 'user_id' })
   userId: number;
-  @Column()
+  @Column({ name: 'publication_id' })
   publicationId: number;
 }

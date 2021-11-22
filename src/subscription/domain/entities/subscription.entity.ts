@@ -1,29 +1,35 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('publications')
-export class Publication {
+@Entity('subscriptions')
+export class Subscription {
   @PrimaryGeneratedColumn()
   id: number;
   @Column({ default: null })
-  publicationType: number;
+  subscriptionType: number;
   @Column()
-  title: string;
+  name: string;
   @Column()
-  content: string;
+  description: string;
+  @Column()
+  end_date: number;
   @Column({ default: null })
   participantLimit: number;
   @Column({ default: null })
   prize_pool: number;
   @Column({ default: null })
-  urlToImage: string;
+  cost: number;
   @Column({ default: null })
-  tournamentDate: string;
+  end_Date: string;
   @Column({ default: null })
-  tournamentHour: string;
+  amountPaid: number;
   @Column({ default: null })
-  publicatedAt: string;
+  active: boolean;
   @Column({ default: null })
-  gameId: number;
+  payment_gateway_Id: number;
+  @Column({ default: null })
+  payment_Id: number;
+  @Column({ default: null })
+  membership_Id: number;
   @Column()
   userId: number;
 }

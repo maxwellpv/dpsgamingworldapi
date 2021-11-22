@@ -1,10 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { FavoriteGame } from '../entities/favorite-game.entity';
+import { FavoriteGame } from '../domain/entities/favorite-game.entity';
+import { FavoriteGamesInterfaceService } from '../domain/services/favorite-games-interface.service';
 
 @Injectable()
-export class FavoriteGamesService {
+export class FavoriteGamesService implements FavoriteGamesInterfaceService {
   constructor(
     @InjectRepository(FavoriteGame)
     private favoriteGameRepository: Repository<FavoriteGame>,

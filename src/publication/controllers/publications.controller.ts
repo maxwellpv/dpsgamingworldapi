@@ -9,7 +9,7 @@ import {
   Res,
 } from '@nestjs/common';
 import { PublicationsService } from '../services/publications.service';
-import { Publication } from '../entities/publication.entity';
+import { Publication } from '../domain/entities/publication.entity';
 
 @Controller('publications')
 export class PublicationsController {

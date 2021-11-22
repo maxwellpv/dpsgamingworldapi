@@ -9,7 +9,7 @@ import {
   Res,
 } from '@nestjs/common';
 import { TournamentsService } from '../services/tournaments.service';
-import { Tournament } from '../entities/tournament.entity';
+import { Tournament } from '../domain/entities/tournament.entity';
 
 @Controller('tournaments')
 export class TournamentsController {
