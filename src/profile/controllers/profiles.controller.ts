@@ -87,15 +87,8 @@ export class ProfilesController {
     return response.status(HttpStatus.OK).json({ profile });
   }
   @Put('/:id')
-  async updateById(
-    @Res() response,
-    @Body() profile: Profile,
-    @Param('id') id,
-  ) {
-    const updateResult = await this.ProfilesService.updateProfile(
-      id,
-      profile,
-    );
+  async updateById(@Res() response, @Body() profile: Profile, @Param('id') id) {
+    const updateResult = await this.profilesService.updateProfile(id, profile);
     return response.status(HttpStatus.CREATED).json({ updateResult });
   }
 }
