@@ -51,11 +51,14 @@ export class ParticipantsService implements ParticipantsInterfaceService {
     id: string,
     participant: Participant,
   ): Promise<Participant> {
+    if (participant.points < 0) return null;
+    const updateParticipant: Participant = {} as Participant;
+    updateParticipant.points = participant.points;
     const todo = await this.participantRepository.findOne(id);
     if (!todo == null) {
       return null;
     }
-    await this.participantRepository.update(id, participant);
+    await this.participantRepository.update(id, updateParticipant);
     return await this.participantRepository.findOne(id);
   }
 }
