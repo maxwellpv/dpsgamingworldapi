@@ -22,10 +22,7 @@ export class ProfilesService implements ProfilesInterfaceService {
   create(profile: Profile): Promise<Profile> {
     return this.profileRepository.save(profile);
   }
-  async updateProfile(
-    id: string,
-    profile: Profile,
-  ): Promise<Profile> {
+  async updateProfile(id: string, profile: Profile): Promise<Profile> {
     const todo = await this.profileRepository.findOne(id);
     if (!todo == null) {
       return null;

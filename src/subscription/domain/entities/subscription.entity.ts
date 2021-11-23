@@ -10,16 +10,8 @@ export class Subscription {
   name: string;
   @Column()
   description: string;
-  @Column()
-  end_date: number;
   @Column({ default: null })
-  participantLimit: number;
-  @Column({ default: null })
-  prize_pool: number;
-  @Column({ default: null })
-  cost: number;
-  @Column({ default: null })
-  end_Date: string;
+  end_date: string;
   @Column({ default: null })
   amountPaid: number;
   @Column({ default: null })

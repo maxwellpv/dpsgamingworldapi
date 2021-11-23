@@ -12,15 +12,22 @@ import { Publication } from './publication/domain/entities/publication.entity';
 import { PublicationsModule } from './publication/modules/publications.module';
 import { Tournament } from './business/domain/entities/tournament.entity';
 import { TournamentsModule } from './business/modules/tournaments.module';
+import { ExternalAPI } from './shared/inbound/external-apis/domain/entities/external-api.entity';
+import { Game } from './shared/inbound/games/domain/entities/game.entity';
+import { ExternalAPIModule } from './shared/inbound/external-apis/modules/external-api.module';
+import { GamesModule } from './shared/inbound/games/modules/games.module';
+import { NewsModule } from './shared/inbound/news/modules/news.module';
+import { Subscription } from './subscription/domain/entities/subscription.entity';
+import { SubscriptionsModule } from './subscription/modules/subscriptions.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
+      host: 'xempre.com',
       port: 3306,
-      username: 'root',
-      password: '123456',
+      username: 'external',
+      password: 'XempreDB',
       database: 'gamingworld_dps',
       entities: [
         User,
@@ -29,6 +36,9 @@ import { TournamentsModule } from './business/modules/tournaments.module';
         StreamingCategory,
         Tournament,
         Publication,
+        ExternalAPI,
+        Game,
+        Subscription,
       ],
       synchronize: true,
       dropSchema: false,
@@ -38,6 +48,10 @@ import { TournamentsModule } from './business/modules/tournaments.module';
     TournamentsModule,
     UsersModule,
     ProfilesModule,
+    ExternalAPIModule,
+    GamesModule,
+    NewsModule,
+    SubscriptionsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

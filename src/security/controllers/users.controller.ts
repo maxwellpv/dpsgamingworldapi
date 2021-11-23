@@ -12,7 +12,7 @@ import { User } from '../domain/entities/user.entity';
 import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('users')
-@Controller('users')
+@Controller('api/v1/users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
@@ -28,7 +28,7 @@ export class UsersController {
     return response.status(HttpStatus.OK).json({ users });
   }
 
-  @Get(':id')
+  @Get('')
   async findById(@Res() response, @Param('id') id) {
     const user = await this.usersService.findOne(id);
     return response.status(HttpStatus.OK).json({ user });
