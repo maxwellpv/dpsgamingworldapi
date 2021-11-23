@@ -17,6 +17,8 @@ import { Game } from './shared/inbound/games/domain/entities/game.entity';
 import { ExternalAPIModule } from './shared/inbound/external-apis/modules/external-api.module';
 import { GamesModule } from './shared/inbound/games/modules/games.module';
 import { NewsModule } from './shared/inbound/news/modules/news.module';
+import { Subscription } from './subscription/domain/entities/subscription.entity';
+import { SubscriptionsModule } from './subscription/modules/subscriptions.module';
 
 @Module({
   imports: [
@@ -36,6 +38,7 @@ import { NewsModule } from './shared/inbound/news/modules/news.module';
         Publication,
         ExternalAPI,
         Game,
+        Subscription,
       ],
       synchronize: true,
       dropSchema: false,
@@ -48,6 +51,7 @@ import { NewsModule } from './shared/inbound/news/modules/news.module';
     ExternalAPIModule,
     GamesModule,
     NewsModule,
+    SubscriptionsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

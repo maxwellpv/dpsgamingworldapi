@@ -10,8 +10,10 @@ import {
 } from '@nestjs/common';
 import { SubscriptionsService } from '../services/subscriptions.service';
 import { Subscription } from '../domain/entities/subscription.entity';
+import { ApiTags } from '@nestjs/swagger';
 
-@Controller('subscriptions')
+@ApiTags('subscriptions')
+@Controller('api/v1/subscriptions')
 export class SubscriptionsController {
   constructor(private readonly subscriptionService: SubscriptionsService) {}
   @Post()
