@@ -13,8 +13,8 @@ export class GamesController {
     return response.status(HttpStatus.OK).json({ games });
   }
 
-  @Get('')
-  async findById(@Res() response, @Query('id') id: string) {
+  @Get('/:id')
+  async findById(@Res() response, @Param('id') id: string) {
     const game = await this.gamesService.findOne(id);
     return response.status(HttpStatus.OK).json({ game });
   }
