@@ -74,8 +74,12 @@ export class TournamentsController {
   async updateTournamentPoints(
     @Res() response,
     @Param('participantId') participantId,
+    @Body() participant,
   ) {
-    const tournament = await this.tournamentsService.findOne(participantId);
-    return response.status(HttpStatus.CREATED).json({ tournament });
+    const updateResult = await this.participantService.updateParticipant(
+      participantId,
+      participant,
+    );
+    return response.status(HttpStatus.CREATED).json({ updateResult });
   }
 }
