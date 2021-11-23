@@ -1,10 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Profile } from '../entities/profile.entity';
+import { Profile } from '../domain/entities/profile.entity';
 import { FindOneOptions, Repository } from 'typeorm';
+import { ProfilesInterfaceService } from '../domain/services/profiles-interface.service';
 
 @Injectable()
-export class ProfilesService {
+export class ProfilesService implements ProfilesInterfaceService {
   constructor(
     @InjectRepository(Profile)
     private profileRepository: Repository<Profile>,
@@ -21,10 +22,7 @@ export class ProfilesService {
   create(profile: Profile): Promise<Profile> {
     return this.profileRepository.save(profile);
   }
-  async updateProfile(
-    id: string,
-    profile: Profile,
-  ): Promise<Profile> {
+  async updateProfile(id: string, profile: Profile): Promise<Profile> {
     const todo = await this.profileRepository.findOne(id);
     if (!todo == null) {
       return null;

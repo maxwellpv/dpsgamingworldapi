@@ -1,10 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, UpdateResult } from 'typeorm';
-import { Tournament } from '../entities/tournament.entity';
+import { Tournament } from '../domain/entities/tournament.entity';
+import { TournamentsInterfaceService } from '../domain/services/tournaments-interface.service';
 
 @Injectable()
-export class TournamentsService {
+export class TournamentsService implements TournamentsInterfaceService {
   constructor(
     @InjectRepository(Tournament)
     private tournamentsService: Repository<Tournament>,
@@ -12,14 +13,14 @@ export class TournamentsService {
   findAll(): Promise<Tournament[]> {
     return this.tournamentsService.find();
   }
-  findOne(id: string): Promise<Tournament> {
+  findOne(id: number): Promise<Tournament> {
     return this.tournamentsService.findOne(id);
   }
-  createPublication(publication: Tournament): Promise<Tournament> {
+  createTournament(publication: Tournament): Promise<Tournament> {
     return this.tournamentsService.save(publication);
   }
-  async updatePublication(
-    id: string,
+  async updateTournament(
+    id: number,
     tournament: Tournament,
   ): Promise<Tournament> {
     const todo = await this.tournamentsService.findOne(id);

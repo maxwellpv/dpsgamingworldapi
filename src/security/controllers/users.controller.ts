@@ -8,11 +8,11 @@ import {
   Res,
 } from '@nestjs/common';
 import { UsersService } from '../services/users.service';
-import { User } from '../entities/user.entity';
+import { User } from '../domain/entities/user.entity';
 import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('users')
-@Controller('users')
+@Controller('api/v1/users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
@@ -28,7 +28,7 @@ export class UsersController {
     return response.status(HttpStatus.OK).json({ users });
   }
 
-  @Get(':id')
+  @Get('')
   async findById(@Res() response, @Param('id') id) {
     const user = await this.usersService.findOne(id);
     return response.status(HttpStatus.OK).json({ user });

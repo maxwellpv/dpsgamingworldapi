@@ -9,7 +9,7 @@ import {
   Res,
 } from '@nestjs/common';
 import { ProfilesService } from '../services/profiles.service';
-import { Profile } from '../entities/profile.entity';
+import { Profile } from '../domain/entities/profile.entity';
 import { ApiTags } from '@nestjs/swagger';
 import { GameExperiencesService } from '../services/game-experiences.service';
 import { StreamingCategoriesService } from '../services/streaming-categories.service';
@@ -18,7 +18,7 @@ import { TournamentExperiencesService } from '../services/tournament-experiences
 import { FavoriteGamesService } from '../services/favorite-games.service';
 
 @ApiTags('profiles')
-@Controller('profiles')
+@Controller('api/v1/profiles')
 export class ProfilesController {
   constructor(
     private readonly profilesService: ProfilesService,
@@ -87,15 +87,8 @@ export class ProfilesController {
     return response.status(HttpStatus.OK).json({ profile });
   }
   @Put('/:id')
-  async updateById(
-    @Res() response,
-    @Body() profile: Profile,
-    @Param('id') id,
-  ) {
-    const updateResult = await this.ProfilesService.updateProfile(
-      id,
-      profile,
-    );
+  async updateById(@Res() response, @Body() profile: Profile, @Param('id') id) {
+    const updateResult = await this.profilesService.updateProfile(id, profile);
     return response.status(HttpStatus.CREATED).json({ updateResult });
   }
 }
