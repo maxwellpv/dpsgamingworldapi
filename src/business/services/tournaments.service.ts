@@ -13,14 +13,14 @@ export class TournamentsService implements TournamentsInterfaceService {
   findAll(): Promise<Tournament[]> {
     return this.tournamentsService.find();
   }
-  findOne(id: string): Promise<Tournament> {
+  findOne(id: number): Promise<Tournament> {
     return this.tournamentsService.findOne(id);
   }
-  createPublication(publication: Tournament): Promise<Tournament> {
+  createTournament(publication: Tournament): Promise<Tournament> {
     return this.tournamentsService.save(publication);
   }
-  async updatePublication(
-    id: string,
+  async updateTournament(
+    id: number,
     tournament: Tournament,
   ): Promise<Tournament> {
     const todo = await this.tournamentsService.findOne(id);

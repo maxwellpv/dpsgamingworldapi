@@ -10,6 +10,8 @@ export class Tournament {
   prizePool: number;
   @Column({ default: null, name: 'game_id' })
   gameId: number;
+  @Column({ default: null, name: 'tournament_capacity' })
+  tournamentCapacity: number;
   @Column({ name: 'user_id' })
   userId: number;
   @Column({ name: 'publication_id' })
