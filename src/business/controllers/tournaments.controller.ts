@@ -10,8 +10,10 @@ import {
 } from '@nestjs/common';
 import { TournamentsService } from '../services/tournaments.service';
 import { Tournament } from '../domain/entities/tournament.entity';
+import { ApiTags } from '@nestjs/swagger';
 
-@Controller('tournaments')
+@ApiTags('tournaments')
+@Controller('api/v1/tournaments')
 export class TournamentsController {
   constructor(private readonly tournamentsService: TournamentsService) {}
   @Post()

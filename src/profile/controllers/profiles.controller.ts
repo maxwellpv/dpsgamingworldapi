@@ -18,7 +18,7 @@ import { TournamentExperiencesService } from '../services/tournament-experiences
 import { FavoriteGamesService } from '../services/favorite-games.service';
 
 @ApiTags('profiles')
-@Controller('profiles')
+@Controller('api/v1/profiles')
 export class ProfilesController {
   constructor(
     private readonly profilesService: ProfilesService,

@@ -21,6 +21,6 @@ export class NewsService implements NewsServiceInterface {
       },
     );
 
-    return JSON.stringify(await response.json());
+    return await response.json();
   }
 }

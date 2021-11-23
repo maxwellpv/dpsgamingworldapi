@@ -10,8 +10,10 @@ import {
 } from '@nestjs/common';
 import { PublicationsService } from '../services/publications.service';
 import { Publication } from '../domain/entities/publication.entity';
+import { ApiTags } from '@nestjs/swagger';
 
-@Controller('publications')
+@ApiTags('publications')
+@Controller('api/v1/publications')
 export class PublicationsController {
   constructor(private readonly publicationService: PublicationsService) {}
   @Post()

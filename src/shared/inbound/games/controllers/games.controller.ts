@@ -1,9 +1,9 @@
 import { ApiTags } from '@nestjs/swagger';
-import { Controller, Get, HttpStatus, Param, Res } from '@nestjs/common';
+import { Controller, Get, HttpStatus, Param, Query, Res } from '@nestjs/common';
 import { GamesService } from '../services/games.service';
 
 @ApiTags('games')
-@Controller('games')
+@Controller('api/v1/games')
 export class GamesController {
   constructor(private readonly gamesService: GamesService) {}
 
@@ -13,14 +13,14 @@ export class GamesController {
     return response.status(HttpStatus.OK).json({ games });
   }
 
-  @Get('/:id')
-  async findById(@Res() response, @Param('id') id) {
+  @Get('')
+  async findById(@Res() response, @Query('id') id: string) {
     const game = await this.gamesService.findOne(id);
     return response.status(HttpStatus.OK).json({ game });
   }
 
-  @Get('/find/:name')
-  async findByGameName(@Res() response, @Param('name') name) {
+  @Get('/find')
+  async findByGameName(@Res() response, @Query('name') name: string) {
     const games = await this.gamesService.findByGameName(name);
     return response.status(HttpStatus.OK).json({ games });
   }
