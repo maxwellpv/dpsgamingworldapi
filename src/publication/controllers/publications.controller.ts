@@ -17,7 +17,7 @@ import { ApiTags } from '@nestjs/swagger';
 export class PublicationsController {
   constructor(private readonly publicationService: PublicationsService) {}
   @Post()
-  async createBook(@Res() response, @Body() publication: Publication) {
+  async createPublication(@Res() response, @Body() publication: Publication) {
     const newPublication = await this.publicationService.createPublication(
       publication,
     );

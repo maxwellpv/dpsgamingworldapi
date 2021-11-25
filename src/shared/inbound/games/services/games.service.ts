@@ -49,7 +49,7 @@ export class GamesService implements GamesServiceInterface {
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
         'Client-ID': '8en9cck6wbdrkinl4i0oahhxf3ali1',
-        Authorization: credentials.token,
+        Authorization: 'Bearer ' + credentials.token,
       },
     });
 
