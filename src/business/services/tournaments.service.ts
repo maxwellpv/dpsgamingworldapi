@@ -16,8 +16,9 @@ export class TournamentsService implements TournamentsInterfaceService {
   findOne(id: number): Promise<Tournament> {
     return this.tournamentsService.findOne(id);
   }
-  createTournament(publication: Tournament): Promise<Tournament> {
-    return this.tournamentsService.save(publication);
+  createTournament(tournament: Tournament): Promise<Tournament> {
+    tournament.participants = [];
+    return this.tournamentsService.save(tournament);
   }
   async updateTournament(
     id: number,

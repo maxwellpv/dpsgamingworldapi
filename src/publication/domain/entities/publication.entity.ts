@@ -26,4 +26,18 @@ export class Publication {
   gameId: number;
   @Column()
   userId: number;
+
+  public validParticipantLimit(): boolean {
+    // There cannot be tournaments with less than 2 participants.
+    return this.participantLimit < 2;
+  }
+
+  public validTournamentDate(): boolean {
+    // The date of a tournament cannot be less than the current date.
+    const actualDate = new Date();
+    const tournamentDate = new Date(
+      this.tournamentDate + ' ' + this.tournamentHour,
+    );
+    return tournamentDate < actualDate;
+  }
 }
