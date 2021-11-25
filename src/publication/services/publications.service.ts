@@ -18,7 +18,10 @@ export class PublicationsService implements PublicationsInterfaceService {
   }
   createPublication(publication: Publication): Promise<Publication> {
     const p = new Publication();
+    // Validation dates
     p.participantLimit = publication.participantLimit;
+    p.tournamentDate = publication.tournamentDate;
+    p.tournamentHour = publication.tournamentHour;
     if (p.validTournamentDate()) return null;
     if (p.validParticipantLimit()) return null;
     return this.publicationRepository.save(publication);
