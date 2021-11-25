@@ -23,28 +23,20 @@ export class ParticipantsService implements ParticipantsInterfaceService {
     participant: Participant,
     tournamentId: number,
   ): Promise<Participant> {
-    let tournament: Tournament;
-    await this.tournamentService
-      .findOne(tournamentId)
-      .then((x) => (tournament = x));
+    const tournament = await this.tournamentService.findOne(tournamentId);
 
-    let participants: Participant[];
+    tournament.participants = await this.findAllByTournamentId(tournamentId);
 
-    await this.findAllByTournamentId(tournamentId).then(
-      (x) => (participants = x),
-    );
-
-    if (participants.length + 1 > tournament.tournamentCapacity) return null;
-    if (participants.find((x) => x.userId == participant.userId)) return null;
-
-    participant.tournamentId = tournamentId;
+    if (tournament.participantInTournament(participant.userId)) return null;
+    if (!tournament.capacityNotReached()) return null;
+    participant.tournament = tournament;
     return this.participantRepository.save(participant);
   }
 
   async findAllByTournamentId(tournamentId: number) {
     return await this.participantRepository
       .createQueryBuilder('participants')
-      .where(`participants.tournamentId = ${tournamentId}`)
+      .where(`participants.tournament.id = ${tournamentId}`)
       .getMany();
   }
   async updateParticipant(

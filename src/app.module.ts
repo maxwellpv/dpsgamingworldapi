@@ -24,10 +24,10 @@ import { SubscriptionsModule } from './subscription/modules/subscriptions.module
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'xempre.com',
+      host: 'localhost',
       port: 3306,
-      username: 'external',
-      password: 'XempreDB',
+      username: 'root',
+      password: '123456',
       database: 'gamingworld_dps',
       entities: [
         User,
